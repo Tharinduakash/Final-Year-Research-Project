@@ -1,0 +1,52 @@
+# Configuration file for the Hybrid AI Stock Prediction System
+
+# Data sources
+data:
+  stocks:
+    - AAPL
+    - MSFT
+    - GOOGL
+    - AMZN
+    - TSLA
+  apis:
+    alpha_vantage_key: ${ALPHA_VANTAGE_API_KEY}
+    news_api_key: ${NEWS_API_KEY}
+    twitter_bearer_token: ${TWITTER_BEARER_TOKEN}
+
+# Model parameters
+models:
+  lstm:
+    sequence_length: 60
+    batch_size: 32
+    epochs: 100
+    learning_rate: 0.001
+  transformer:
+    num_layers: 6
+    num_heads: 8
+    d_model: 512
+    dff: 2048
+  llm:
+    model_name: "gpt-3.5-turbo"
+    temperature: 0.7
+    max_tokens: 1000
+
+# Training settings
+training:
+  test_split: 0.2
+  validation_split: 0.1
+  random_seed: 42
+
+# Evaluation
+evaluation:
+  metrics:
+    - r2
+    - mae
+    - rmse
+  backtesting:
+    initial_capital: 100000
+    transaction_cost: 0.001
+
+# Dashboard
+dashboard:
+  port: 8501
+  host: "0.0.0.0"
